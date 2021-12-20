@@ -1,4 +1,4 @@
-package com.jalexy.meme.base.presentation
+package com.jalexy.meme.base
 
 import androidx.fragment.app.Fragment
 
