@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.jalexy.meme.home.presentation.HomeFragment"
+        android:name="com.jalexy.meme.info.presentation.MemeInfoFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_meme_info" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
