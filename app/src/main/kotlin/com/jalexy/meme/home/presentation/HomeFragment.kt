@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.jalexy.meme.base.presentation.BindingFragment
+import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentHomeBinding
 
 class HomeFragment : BindingFragment() {
