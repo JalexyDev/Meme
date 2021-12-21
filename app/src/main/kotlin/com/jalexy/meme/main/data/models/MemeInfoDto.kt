@@ -9,26 +9,26 @@ data class MemeInfoDto(
     val id: Int,
     @SerializedName("bottomText")
     @Expose
-    val bottomText: String,
+    val bottomText: String?,
     @SerializedName("detail")
     @Expose
-    val details: String,
+    val details: String?,
     @SerializedName("image")
     @Expose
-    val imageUrl: String,
+    val imageUrl: String?,
     @SerializedName("name")
     @Expose
-    val name: String,
+    val name: String?,
     @SerializedName("submissions")
     @Expose
-    val submissions: List<MemeSubmissionDto>,
+    val submissions: List<MemeSubmissionDto>?,
     @SerializedName("tags")
     @Expose
-    val tags: String,
+    val tags: String?,
     @SerializedName("thumb")
     @Expose
-    val thumb: String,
+    val thumb: String?,
     @SerializedName("topText")
     @Expose
-    val topText: String
+    val topText: String?
 )

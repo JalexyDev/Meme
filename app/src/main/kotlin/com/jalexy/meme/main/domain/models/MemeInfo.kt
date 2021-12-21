@@ -8,6 +8,6 @@ data class MemeInfo(
     val name: String,
     val submissions: List<MemeSubmission>,
     val tags: String,
-    val thumb: String,
+    val thumb: String?,
     val topText: String
 )

@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BindingFragment() {
 
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel by viewModels<HomeViewModel>()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
