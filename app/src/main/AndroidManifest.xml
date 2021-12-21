@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jalexy.meme">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".main.App"
         android:allowBackup="true"
@@ -11,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Meme">
         <activity
-            android:name=".main.MainActivity"
+            android:name=".main.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

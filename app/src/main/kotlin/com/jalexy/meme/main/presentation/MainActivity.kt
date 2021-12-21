@@ -1,4 +1,4 @@
-package com.jalexy.meme.main
+package com.jalexy.meme.main.presentation
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
