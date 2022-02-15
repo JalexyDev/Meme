@@ -1,16 +1,21 @@
 package com.jalexy.meme.dashboard.presentation
 
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.jalexy.meme.R
+import com.bumptech.glide.Glide
+import com.jalexy.meme.databinding.ItemMemeDashboardBinding
+import com.jalexy.meme.main.domain.models.Meme
 
-class DashboardItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class DashboardItemViewHolder(val binding: ItemMemeDashboardBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    val ivLogoMeme: ImageView = itemView.findViewById<ImageView>(R.id.ivLogoMeme)
-    val tvTopText: TextView = itemView.findViewById<TextView>(R.id.tvTopText)
-    val tvBottomText: TextView = itemView.findViewById<TextView>(R.id.tvBottomText)
-    val tvName: TextView = itemView.findViewById<TextView>(R.id.tvName)
-    val tvTags: TextView = itemView.findViewById<TextView>(R.id.tvTags)
+    fun bind(meme: Meme) {
+
+        Glide.with(itemView.context)
+            .load(meme.image)
+            .into(binding.ivLogoMeme)
+        binding.tvTopText.text = meme.topText
+        binding.tvBottomText.text = meme.bottomText
+        binding.tvTitleText.text = meme.name
+        binding.tvDescriptionText.text = meme.tags
+    }
 }

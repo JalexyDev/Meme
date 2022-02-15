@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
-    private val loadMemeAllUseCase: LoadMemeAllUseCase
+    private val loadMemeAllUseCase: LoadMemeAllUseCase,
 ) : ViewModel() {
 
     private val _screenState = MutableLiveData<ScreenState>()
@@ -24,18 +24,33 @@ class DashboardViewModel @Inject constructor(
     val meme: LiveData<List<Meme>> = _meme
 
 
-    fun loadAllMeme(page: Int){
+    fun loadAllMeme(page: Int) {
         viewModelScope.launch {
             _screenState.value = ScreenState.Loading
             try {
                 val meme = loadMemeAllUseCase(page)
                 _meme.postValue(meme)
                 _screenState.value = ScreenState.Content
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
                 //todo Заменить на нормальное сообщение =)
                 _screenState.value = ScreenState.Error("Response sucked")
             }
         }
     }
+
+//    fun loadMeme(id: Int) {
+//        viewModelScope.launch {
+//            _screenState.value = ScreenState.Loading
+//            try{
+//                val meme = loadMemeInfoUseCase(id) //заменить
+//                _memeInfo.postValue(meme)          //заменить
+//                _screenState.value = ScreenState.Content  //оставить
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//                //todo Заменить на нормальное сообщение =)
+//                _screenState.value = ScreenState.Error("Response sucked")
+//            }
+//        }
+//    }
 }

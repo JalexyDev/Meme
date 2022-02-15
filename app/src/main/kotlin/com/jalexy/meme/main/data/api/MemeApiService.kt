@@ -14,11 +14,6 @@ interface MemeApiService {
     @GET("{$PAGE}")
     suspend fun getAllMeme(@Path(PAGE) page: Int): AllMemesResponse
 
-//    @GET(PAGE)
-//    suspend fun getAllMeme(
-//        @Query(PAGE) page: Int,
-//    ): AllMemesResponse
-
     companion object {
         private const val ID = "id"
         private const val PAGE = "page"

@@ -3,39 +3,31 @@ package com.jalexy.meme.dashboard.presentation
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.bumptech.glide.Glide
-import com.jalexy.meme.R
+import com.jalexy.meme.databinding.ItemMemeDashboardBinding
 import com.jalexy.meme.main.domain.models.Meme
+import javax.inject.Inject
 
-class DashboardAdapter() : ListAdapter<Meme, DashboardItemViewHolder>
-    (MemeItemDiffCallback()) {
+class DashboardAdapter @Inject constructor(callback: MemeItemDiffCallback) :
+    ListAdapter<Meme, DashboardItemViewHolder>(callback) {
 
     var changeFragmentClickListener: ((Meme) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_meme_info,
+        val binding = ItemMemeDashboardBinding.inflate(
+            LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return DashboardItemViewHolder(view)
+        return DashboardItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: DashboardItemViewHolder, position: Int) {
 
         val memeItem = getItem(position)
-
-        viewHolder.itemView.setOnClickListener{
+        val binding = viewHolder.binding
+        binding.root.setOnClickListener {
             changeFragmentClickListener?.invoke(memeItem)
         }
-
-        Glide.with(viewHolder.itemView.context)
-            .load(memeItem.image)
-            .into(viewHolder.ivLogoMeme)
-
-        viewHolder.tvTopText.text = memeItem.topText
-        viewHolder.tvBottomText.text = memeItem.bottomText
-        viewHolder.tvName.text = memeItem.name
-        viewHolder.tvTags.text = memeItem.tags
+        viewHolder.bind(memeItem)
     }
 }
