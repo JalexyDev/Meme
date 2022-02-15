@@ -74,7 +74,6 @@ class DashboardFragment : BindingFragment() {
     private fun setupRecyclerView() {
 
         with(binding.rvMemeList) {
-            memeAdapter = DashboardAdapter(MemeItemDiffCallback())
             adapter = memeAdapter
         }
 
