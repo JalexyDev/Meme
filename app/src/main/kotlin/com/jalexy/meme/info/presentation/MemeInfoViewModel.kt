@@ -18,19 +18,19 @@ class MemeInfoViewModel @Inject constructor(
     private val loadMemeInfoUseCase: LoadMemeInfoUseCase
 ) : ViewModel() {
 
-    private val _screenState = MutableLiveData<ScreenState>()
-    val screenState: LiveData<ScreenState> = _screenState
+    private val _screenState = MutableLiveData<ScreenState>() //оставить
+    val screenState: LiveData<ScreenState> = _screenState     //оставить
 
-    private val _memeInfo = MutableLiveData<MemeInfo>()
-    val memeInfo: LiveData<MemeInfo> = _memeInfo
+    private val _memeInfo = MutableLiveData<MemeInfo>() // поменять на список
+    val memeInfo: LiveData<MemeInfo> = _memeInfo //оставить
 
     fun loadMeme(id: Int) {
         viewModelScope.launch {
             _screenState.value = ScreenState.Loading
             try{
-                val meme = loadMemeInfoUseCase(id)
-                _memeInfo.postValue(meme)
-                _screenState.value = ScreenState.Content
+                val meme = loadMemeInfoUseCase(id) //заменить
+                _memeInfo.postValue(meme)          //заменить
+                _screenState.value = ScreenState.Content  //оставить
             } catch (e: Exception) {
                 e.printStackTrace()
                 //todo Заменить на нормальное сообщение =)
