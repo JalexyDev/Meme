@@ -5,102 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardBackgroundColor="@color/card_view"
-    app:cardUseCompatPadding="true">
+    app:cardBackgroundColor="@color/card_view">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/l_margin">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_title_text"
+            style="@style/MemeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+            android:layout_marginHorizontal="@dimen/l_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/tv_title_text" />
 
-            <TextView
-                android:id="@+id/tv_title_text"
-                style="@style/MemeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:layout_marginHorizontal="@dimen/l_margin"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_title_size"
-                tools:text="@string/tv_title_text" />
+        <ImageView
+            android:id="@+id/iv_logo_meme"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_imageview"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/l_margin"
+            android:contentDescription="@string/iv_logo_meme"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_text"
+            tools:ignore="MissingConstraints"
+            tools:src="@mipmap/ic_launcher" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/l_margin">
+        <TextView
+            android:id="@+id/tv_top_text"
+            style="@style/MemeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/l_margin"
+            android:layout_marginTop="@dimen/item_meme_margin"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="1.7"
+            android:shadowRadius="10"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_logo_meme"
+            tools:text="@string/tv_top_text" />
 
-                <ImageView
-                    android:id="@+id/iv_logo_meme"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    tools:layout_editor_absoluteX="8dp"
-                    tools:layout_editor_absoluteY="8dp"
-                    tools:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/tv_bottom_text"
+            style="@style/MemeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/l_margin"
+            android:layout_marginBottom="@dimen/item_meme_margin"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="1.7"
+            android:shadowRadius="10"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_logo_meme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/tv_bottom_text" />
 
-                <TextView
-                    android:id="@+id/tv_top_text"
-                    style="@style/MemeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/l_margin"
-                    android:layout_marginTop="@dimen/item_meme_margin"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/iv_logo_meme"
-                    android:textColor="@color/white"
-                    android:shadowColor="@color/black"
-                    android:shadowDx="2"
-                    android:shadowDy="1.7"
-                    android:shadowRadius="10"
-                    android:textAllCaps="true"
-                    tools:text="@string/tv_top_text" />
-
-                <TextView
-                    android:id="@+id/tv_bottom_text"
-                    style="@style/MemeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/l_margin"
-                    android:layout_marginBottom="@dimen/item_meme_margin"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_logo_meme"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textColor="@color/white"
-                    android:shadowColor="@color/black"
-                    android:shadowDx="2"
-                    android:shadowDy="1.7"
-                    android:shadowRadius="10"
-                    android:textAllCaps="true"
-                    tools:text="@string/tv_bottom_text" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <TextView
-                android:id="@+id/tv_description_text"
-                style="@style/MemeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/l_margin"
-                android:layout_marginTop="@dimen/l_margin"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_description_size"
-                android:paddingVertical="@dimen/activity_vertical_margin_item"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_logo_meme"
-                tools:text="@string/tv_bottom_text" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_description_text"
+            style="@style/MemeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/l_margin"
+            android:layout_marginTop="@dimen/l_margin"
+            android:paddingVertical="@dimen/activity_vertical_margin_item"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_description_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo_meme"
+            tools:text="@string/tv_bottom_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

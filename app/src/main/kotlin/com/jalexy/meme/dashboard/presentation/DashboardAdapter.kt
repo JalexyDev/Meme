@@ -24,10 +24,6 @@ class DashboardAdapter @Inject constructor(callback: MemeItemDiffCallback) :
     override fun onBindViewHolder(viewHolder: DashboardItemViewHolder, position: Int) {
 
         val memeItem = getItem(position)
-        val binding = viewHolder.binding
-        binding.root.setOnClickListener {
-            changeFragmentClickListener?.invoke(memeItem)
-        }
-        viewHolder.bind(memeItem)
+        viewHolder.bind(memeItem, changeFragmentClickListener)
     }
 }

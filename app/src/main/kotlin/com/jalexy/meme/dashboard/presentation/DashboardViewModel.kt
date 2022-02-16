@@ -23,6 +23,9 @@ class DashboardViewModel @Inject constructor(
     private val _meme = MutableLiveData<List<Meme>>()
     val meme: LiveData<List<Meme>> = _meme
 
+    init {
+        loadAllMeme(FIRST_PAGE)
+    }
 
     fun loadAllMeme(page: Int) {
         viewModelScope.launch {
@@ -39,18 +42,7 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
-//    fun loadMeme(id: Int) {
-//        viewModelScope.launch {
-//            _screenState.value = ScreenState.Loading
-//            try{
-//                val meme = loadMemeInfoUseCase(id) //заменить
-//                _memeInfo.postValue(meme)          //заменить
-//                _screenState.value = ScreenState.Content  //оставить
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//                //todo Заменить на нормальное сообщение =)
-//                _screenState.value = ScreenState.Error("Response sucked")
-//            }
-//        }
-//    }
+    companion object {
+        const val FIRST_PAGE = 1
+    }
 }

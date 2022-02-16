@@ -9,6 +9,7 @@
     <dimen name="xxl_margin">20dp</dimen>
     <dimen name="xxxl_margin">28dp</dimen>
     <dimen name="item_meme_margin">40dp</dimen>
+    <dimen name="height_imageview">300dp</dimen>
 
     <dimen name="text_meme_size">24sp</dimen>
     <dimen name="text_title_size">18sp</dimen>

@@ -8,4 +8,5 @@
     <string name="tv_top_text">Верхняя строка мема</string>
     <string name="tv_bottom_text">Нижняя строка мема</string>
     <string name="tv_description_text">Описание мемчика, история происхождения и тп</string>
+    <string name="iv_logo_meme">Изображение мема</string>
 </resources>
