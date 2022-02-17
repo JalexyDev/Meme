@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentMemeInfoBinding
@@ -18,19 +19,20 @@ class MemeInfoFragment : BindingFragment() {
 
     private val homeViewModel by viewModels<MemeInfoViewModel>()
 
+    private val args by navArgs<MemeInfoFragmentArgs>()
     private var _binding: FragmentMemeInfoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //todo сделать выбор id из аргументов или еще как
-        homeViewModel.loadMeme(3)
+        homeViewModel.loadMeme(args.meme.id)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentMemeInfoBinding.inflate(inflater, container, false)
         return binding.root
@@ -40,7 +42,7 @@ class MemeInfoFragment : BindingFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homeViewModel.screenState.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 ScreenState.Content -> showLoading(false)
                 is ScreenState.Error -> showError(it.text)
                 ScreenState.Loading -> showLoading(true)

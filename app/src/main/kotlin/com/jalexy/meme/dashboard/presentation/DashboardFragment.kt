@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentDashboardBinding
+import com.jalexy.meme.main.domain.models.Meme
 import com.jalexy.meme.main.domain.models.ScreenState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -70,9 +72,14 @@ class DashboardFragment : BindingFragment() {
             adapter = memeAdapter
         }
         memeAdapter.changeFragmentClickListener = {
-            Toast.makeText(context, "Переключение фрагмента ${it.id}", Toast.LENGTH_SHORT).show()
+            launchInfoFragment(it)
         }
     }
 
+    private fun launchInfoFragment(meme: Meme) {
+        findNavController()
+            .navigate(DashboardFragmentDirections
+                .actionNavigationDashboardToNavigationHome(meme))
+    }
 
 }
