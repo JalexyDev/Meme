@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentDashboardBinding
 import com.jalexy.meme.main.domain.models.Meme
@@ -39,18 +41,30 @@ class DashboardFragment : BindingFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dashboardViewModel.screenState.observe(viewLifecycleOwner) {
-            when (it) {
-                ScreenState.Content -> showLoading(false)
-                is ScreenState.Error -> showError(it.text)
-                ScreenState.Loading -> showLoading(true)
-            }
+                dashboardViewModel.screenState.observe(viewLifecycleOwner) { screenState ->
+                    when (screenState) {
+                        ScreenState.Content -> showLoading(false)
+                        ScreenState.Loading -> showLoading(true)
+                    }
         }
-
         setupRecyclerView()
         dashboardViewModel.meme.observe(viewLifecycleOwner) {
             memeAdapter.submitList(it)
         }
+
+        binding.rvMemeList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val totalItemCount = layoutManager.itemCount
+                val lastVisibleItemPos = layoutManager.findLastVisibleItemPosition()
+
+                if (lastVisibleItemPos == totalItemCount - 1) {
+                    dashboardViewModel.loadingNextPage()
+                }
+            }
+        })
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -74,6 +88,9 @@ class DashboardFragment : BindingFragment() {
         memeAdapter.changeFragmentClickListener = {
             launchInfoFragment(it)
         }
+        memeAdapter.addToDataBaseClickListener = { item, callback ->
+            dashboardViewModel.addMemeItemToDB(item, callback)
+        }
     }
 
     private fun launchInfoFragment(meme: Meme) {
@@ -81,5 +98,4 @@ class DashboardFragment : BindingFragment() {
             .navigate(DashboardFragmentDirections
                 .actionNavigationDashboardToNavigationHome(meme))
     }
-
 }

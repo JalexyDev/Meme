@@ -32,7 +32,7 @@ class MemeMapper @Inject constructor() {
         )
     }
 
-    fun mapAllMemesDto(dtoItems : List<MemeDto>) = dtoItems.map (::mapMemeDto)
+    fun mapAllMemesDto(dtoItems: List<MemeDto>) = dtoItems.map(::mapMemeDto)
 
     private fun mapMemeDto(dtoItem: MemeDto) = with(dtoItem) {
         Meme(
@@ -41,7 +41,8 @@ class MemeMapper @Inject constructor() {
             image = image.orEmpty(),
             name = name.orEmpty(),
             tags = tags.orEmpty(),
-            topText = topText.orEmpty()
+            topText = topText.orEmpty(),
+            isFavorite = false
         )
     }
 }

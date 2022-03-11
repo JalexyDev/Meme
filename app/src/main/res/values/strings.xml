@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">Meme</string>
     <string name="title_home">Meme Info</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Memes</string>
+    <string name="title_notifications">Favorite</string>
+    <string name="title_before_page">Favorite</string>
+    <string name="title_next_page">Favorite</string>
     <string name="meme_image_descr">Meme image</string>
     <string name="tv_title_text">Название</string>
     <string name="tv_top_text">Верхняя строка мема</string>
     <string name="tv_bottom_text">Нижняя строка мема</string>
     <string name="tv_description_text">Описание мемчика, история происхождения и тп</string>
     <string name="iv_logo_meme">Изображение мема</string>
+    <string name="button_add_to_database">Добавить в базу данных</string>
+    <string name="button_text">+</string>
 </resources>
