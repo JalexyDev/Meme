@@ -5,10 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Meme(
+    var isFavorite: Boolean,
     val id: Int,
     val bottomText: String,
     val image: String,
     val name: String,
     val tags: String,
-    val topText: String,
+    val topText: String
 ) : Parcelable

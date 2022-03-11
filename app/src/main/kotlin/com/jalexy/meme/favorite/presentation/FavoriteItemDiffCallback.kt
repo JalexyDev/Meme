@@ -1,10 +1,10 @@
-package com.jalexy.meme.dashboard.presentation
+package com.jalexy.meme.favorite.presentation
 
 import androidx.recyclerview.widget.DiffUtil
 import com.jalexy.meme.main.domain.models.Meme
 import javax.inject.Inject
 
-class MemeItemDiffCallback @Inject constructor() : DiffUtil.ItemCallback<Meme>() {
+class FavoriteItemDiffCallback @Inject constructor() : DiffUtil.ItemCallback<Meme>() {
     override fun areItemsTheSame(oldItem: Meme, newItem: Meme): Boolean {
         return oldItem.id == newItem.id
     }

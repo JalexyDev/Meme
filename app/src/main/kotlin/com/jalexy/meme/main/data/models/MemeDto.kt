@@ -22,5 +22,6 @@ data class MemeDto(
     val tags: String?,
     @SerializedName("topText")
     @Expose
-    val topText: String?
+    val topText: String?,
+    var isFavorite: Boolean,
 )

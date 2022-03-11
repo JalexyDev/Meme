@@ -25,8 +25,7 @@ class MemeInfoFragment : BindingFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //todo сделать выбор id из аргументов или еще как
-        homeViewModel.loadMeme(args.meme.id)
+        homeViewModel.loadMemeInfo(args.meme)
     }
 
     override fun onCreateView(

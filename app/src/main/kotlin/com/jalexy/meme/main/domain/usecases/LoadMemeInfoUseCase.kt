@@ -1,4 +1,4 @@
-package com.jalexy.meme.info.domain.usecases
+package com.jalexy.meme.main.domain.usecases
 
 import com.jalexy.meme.main.domain.MemeRepository
 import com.jalexy.meme.main.domain.models.MemeInfo
