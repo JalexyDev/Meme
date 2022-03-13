@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Meme</string>
-    <string name="title_home">Meme Info</string>
-    <string name="title_dashboard">Memes</string>
-    <string name="title_notifications">Favorite</string>
+    <string name="title_meme_info">Meme Info</string>
+    <string name="title_meme_list">Memes</string>
+    <string name="title_favorite">Favorite</string>
     <string name="title_before_page">Favorite</string>
     <string name="title_next_page">Favorite</string>
     <string name="meme_image_descr">Meme image</string>

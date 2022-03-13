@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentFavoriteBinding
 import com.jalexy.meme.main.domain.models.Meme
 import com.jalexy.meme.main.domain.models.ScreenState
@@ -16,25 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FavoriteFragment : Fragment() {
+class FavoriteFragment : BindingFragment<FragmentFavoriteBinding>(FragmentFavoriteBinding::class) {
 
     private val favoriteViewModel by viewModels<FavoriteViewModel>()
 
-    private var _binding: FragmentFavoriteBinding? = null
-    private val binding
-        get() = _binding!!
-
     @Inject
     lateinit var favoriteAdapter: FavoriteAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,11 +39,6 @@ class FavoriteFragment : Fragment() {
         favoriteViewModel.getFavoriteList.observe(viewLifecycleOwner) {
             favoriteAdapter.submitList(it)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -81,6 +64,6 @@ class FavoriteFragment : Fragment() {
 
     private fun launchInfoFragment(meme: Meme) {
         findNavController()
-            .navigate(FavoriteFragmentDirections.actionNavigationNotificationsToNavigationHome(meme))
+            .navigate(FavoriteFragmentDirections.actionNavigationFavoriteToNavigationHome(meme))
     }
 }

@@ -2,7 +2,7 @@ package com.jalexy.meme.favorite.presentation
 
 import androidx.lifecycle.*
 import com.jalexy.meme.favorite.domain.usecases.GetFavoriteMemeListUseCase
-import com.jalexy.meme.dashboard.domain.usecases.RemoveFromFavoriteUseCase
+import com.jalexy.meme.memelist.domain.usecases.RemoveFromFavoriteUseCase
 import com.jalexy.meme.main.domain.models.Meme
 import com.jalexy.meme.main.domain.models.ScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,9 @@ class FavoriteViewModel @Inject constructor(
     private val _meme = MutableLiveData<List<Meme>>()
     val meme: LiveData<List<Meme>> = _meme
 
-    val getFavoriteList = getFavoriteMemeListUseCase.invoke()
+    val getFavoriteList by lazy{
+        getFavoriteMemeListUseCase.invoke()
+    }
 
     init {
         getAllFavoriteMemes()
