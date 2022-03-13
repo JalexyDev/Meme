@@ -1,16 +1,15 @@
-package com.jalexy.meme.dashboard.presentation
+package com.jalexy.meme.memelist.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jalexy.meme.dashboard.domain.usecases.*
+import com.jalexy.meme.memelist.domain.usecases.*
 import com.jalexy.meme.main.domain.models.Meme
 import com.jalexy.meme.main.domain.models.ScreenState
 import com.jalexy.meme.main.domain.usecases.ContainsPrimaryKeyMemeInfoUseCase
 import com.jalexy.meme.main.domain.usecases.LoadMemeInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -18,7 +17,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class DashboardViewModel @Inject constructor(
+class MemeListViewModel @Inject constructor(
     private val loadMemeAllUseCase: LoadMemeAllUseCase,
     private val loadMemeInfoUseCase: LoadMemeInfoUseCase,
     private val addFavoriteMemeUseCase: AddFavoriteMemeUseCase,

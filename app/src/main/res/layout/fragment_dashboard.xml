@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".dashboard.presentation.DashboardFragment">
+    tools:context=".memelist.presentation.MemeListFragment">
 
     <ProgressBar
         android:id="@+id/loader"
@@ -26,6 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_meme_dashboard" />
+        tools:listitem="@layout/item_meme" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,7 @@
 package com.jalexy.meme.info.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -15,26 +13,15 @@ import com.jalexy.meme.main.domain.models.ScreenState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MemeInfoFragment : BindingFragment() {
+class MemeInfoFragment : BindingFragment<FragmentMemeInfoBinding>(FragmentMemeInfoBinding::class) {
 
     private val homeViewModel by viewModels<MemeInfoViewModel>()
 
     private val args by navArgs<MemeInfoFragmentArgs>()
-    private var _binding: FragmentMemeInfoBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homeViewModel.loadMemeInfo(args.meme)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentMemeInfoBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,10 +54,5 @@ class MemeInfoFragment : BindingFragment() {
 
     private fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

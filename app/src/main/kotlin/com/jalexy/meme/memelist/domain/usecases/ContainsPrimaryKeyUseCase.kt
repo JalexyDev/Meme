@@ -1,4 +1,4 @@
-package com.jalexy.meme.dashboard.domain.usecases
+package com.jalexy.meme.memelist.domain.usecases
 
 import com.jalexy.meme.main.domain.MemeRepository
 import javax.inject.Inject

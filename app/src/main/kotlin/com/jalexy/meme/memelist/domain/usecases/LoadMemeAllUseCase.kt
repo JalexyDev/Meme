@@ -1,8 +1,7 @@
-package com.jalexy.meme.dashboard.domain.usecases
+package com.jalexy.meme.memelist.domain.usecases
 
 import com.jalexy.meme.main.domain.MemeRepository
 import com.jalexy.meme.main.domain.models.Meme
-import com.jalexy.meme.main.domain.models.MemeInfo
 import javax.inject.Inject
 
 class LoadMemeAllUseCase @Inject constructor(

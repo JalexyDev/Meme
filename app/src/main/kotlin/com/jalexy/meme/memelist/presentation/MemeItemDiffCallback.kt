@@ -1,4 +1,4 @@
-package com.jalexy.meme.dashboard.presentation
+package com.jalexy.meme.memelist.presentation
 
 import androidx.recyclerview.widget.DiffUtil
 import com.jalexy.meme.main.domain.models.Meme

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_dashboard">
+    app:startDestination="@id/navigation_meme_list">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_meme_info"
         android:name="com.jalexy.meme.info.presentation.MemeInfoFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_meme_info"
         tools:layout="@layout/fragment_meme_info" >
         <argument
             android:name="meme"
@@ -16,22 +16,23 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.jalexy.meme.dashboard.presentation.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:id="@+id/navigation_meme_list"
+        android:name="com.jalexy.meme.memelist.presentation.MemeListFragment"
+        android:label="@string/title_meme_list"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/action_navigation_dashboard_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/action_navigation_meme_list_to_navigation_info"
+            app:destination="@id/navigation_meme_info" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_favorite"
         android:name="com.jalexy.meme.favorite.presentation.FavoriteFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite">
         <action
-            android:id="@+id/action_navigation_notifications_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/action_navigation_favorite_to_navigation_home"
+            app:destination="@id/navigation_meme_info" />
     </fragment>
+
 </navigation>

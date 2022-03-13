@@ -1,9 +1,7 @@
-package com.jalexy.meme.dashboard.presentation
+package com.jalexy.meme.memelist.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -18,25 +16,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DashboardFragment : BindingFragment() {
+class MemeListFragment :
+    BindingFragment<FragmentDashboardBinding>(FragmentDashboardBinding::class) {
 
-    private val dashboardViewModel by viewModels<DashboardViewModel>()
-
-    private var _binding: FragmentDashboardBinding? = null
-    private val binding
-        get() = _binding!!
+    private val dashboardViewModel by viewModels<MemeListViewModel>()
 
     @Inject
-    lateinit var memeAdapter: DashboardAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    lateinit var memeAdapter: MemeListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,13 +58,9 @@ class DashboardFragment : BindingFragment() {
         binding.loader.isVisible = isLoading
     }
 
+    //todo если не используешь, удаляй
     private fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setupRecyclerView() {
@@ -95,7 +77,7 @@ class DashboardFragment : BindingFragment() {
 
     private fun launchInfoFragment(meme: Meme) {
         findNavController()
-            .navigate(DashboardFragmentDirections
-                .actionNavigationDashboardToNavigationHome(meme))
+            .navigate(MemeListFragmentDirections
+                .actionNavigationMemeListToNavigationInfo(meme))
     }
 }

@@ -5,20 +5,14 @@
       <map>
         <entry key="..\:/Projects/AndroidStudio/Meme/app/src/main/res/layout/activity_main.xml" value="0.1762917933130699" />
         <entry key="..\:/Projects/AndroidStudio/Meme/app/src/main/res/layout/fragment_meme_info.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1962962962962963" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/fragment_dashboard.xml" value="0.18565400843881857" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/fragment_meme_info.xml" value="0.22" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/item_meme_dashboard.xml" value="0.18" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/item_meme_favotite.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/item_meme_favotite_memes.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/item_meme_info.xml" value="0.25" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/layout/item_meme_loading_dashboard.xml" value="0.15406427221172023" />
-        <entry key="..\:/Users/79963/AndroidStudioProjects/Meme/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+        <entry key="..\:/Projects/AndroidStudio/Meme/app/src/main/res/layout/item_meme.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidStudio/Meme/app/src/main/res/layout/item_meme_favotite.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidStudio/Meme/app/src/main/res/layout/item_meme_loading.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidStudio/Meme/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
