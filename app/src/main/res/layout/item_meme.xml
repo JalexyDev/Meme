@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardBackgroundColor="@color/card_view">
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/l_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -94,10 +95,14 @@
             android:id="@+id/button_add_to_database"
             android:layout_width="@dimen/button_size"
             android:layout_height="@dimen/button_size"
+            android:layout_marginEnd="@dimen/l_margin"
+            android:layout_marginBottom="@dimen/l_margin"
             android:contentDescription="@string/button_add_to_database"
             android:enabled="true"
+            android:gravity="center"
             android:text="@string/button_text"
             android:textSize="@dimen/text_meme_size"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_description_text" />

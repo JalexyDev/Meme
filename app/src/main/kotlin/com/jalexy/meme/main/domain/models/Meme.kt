@@ -1,6 +1,8 @@
 package com.jalexy.meme.main.domain.models
 
 import android.os.Parcelable
+import android.widget.ListAdapter
+import com.jalexy.meme.memelist.presentation.ListItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -11,5 +13,8 @@ data class Meme(
     val image: String,
     val name: String,
     val tags: String,
-    val topText: String
-) : Parcelable
+    val topText: String,
+) : Parcelable, ListItem {
+
+    override fun getItemId(): Int = id
+}
