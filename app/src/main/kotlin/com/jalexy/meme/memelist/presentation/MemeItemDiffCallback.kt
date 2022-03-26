@@ -18,5 +18,3 @@ class MemeItemDiffCallback @Inject constructor() : DiffUtil.ItemCallback<ListIte
             }
             false
         }
-    }
-}

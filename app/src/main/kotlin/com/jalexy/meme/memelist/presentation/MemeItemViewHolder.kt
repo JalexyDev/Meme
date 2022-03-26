@@ -10,6 +10,7 @@ import com.jalexy.meme.databinding.ItemMemeLoadingBinding
 import com.jalexy.meme.main.domain.models.Meme
 
 class MemeItemViewHolder(private val binding: ViewBinding) :
+
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
