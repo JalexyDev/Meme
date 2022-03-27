@@ -14,12 +14,4 @@ class LoaderViewHolder(private val binding: ItemMemeLoadingBinding) :
     fun bind() {
         binding.loader.isVisible = true
     }
-
-//    private fun setButtonColor(meme: Meme) {
-//        if (!meme.isFavorite) {
-//            binding.buttonAddToDatabase.setBackgroundColor(Color.LTGRAY)
-//        } else {
-//            binding.buttonAddToDatabase.setBackgroundColor(Color.BLACK)
-//        }
-//    }
 }

@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        supportActionBar?.setDisplayShowHomeEnabled(false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        supportActionBar?.setDisplayUseLogoEnabled(false)
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
     }

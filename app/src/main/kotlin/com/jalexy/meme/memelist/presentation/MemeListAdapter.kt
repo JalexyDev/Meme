@@ -22,9 +22,6 @@ class MemeListAdapter @Inject constructor(
     lateinit var changeFragmentClickListener: ((Meme) -> Unit)
     lateinit var addToDataBaseClickListener: ((Meme, callback: (item: Meme) -> Unit) -> Meme)
 
-    var isReadyLoader = false
-    val scope = CoroutineScope(Dispatchers.IO)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
@@ -70,6 +67,6 @@ class MemeListAdapter @Inject constructor(
 
     companion object {
         const val VIEW_TYPE_ITEM = 1
-        const val VIEW_TYPE_LOADER = 300
+        const val VIEW_TYPE_LOADER = -2
     }
 }
