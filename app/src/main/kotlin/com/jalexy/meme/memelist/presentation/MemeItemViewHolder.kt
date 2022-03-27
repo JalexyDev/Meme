@@ -1,9 +1,12 @@
 package com.jalexy.meme.memelist.presentation
 
 import android.graphics.Color
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.jalexy.meme.databinding.ItemMemeBinding
+import com.jalexy.meme.databinding.ItemMemeLoadingBinding
 import com.jalexy.meme.main.domain.models.Meme
 
 class MemeItemViewHolder(private val binding: ItemMemeBinding) :

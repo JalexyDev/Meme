@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_meme_info, R.id.navigation_meme_list
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
     }

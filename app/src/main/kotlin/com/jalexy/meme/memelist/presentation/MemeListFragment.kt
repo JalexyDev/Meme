@@ -21,17 +21,20 @@ class MemeListFragment :
 
     private val dashboardViewModel by viewModels<MemeListViewModel>()
 
+    private var isLoadingItem = true
+
     @Inject
     lateinit var memeAdapter: MemeListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-                dashboardViewModel.screenState.observe(viewLifecycleOwner) { screenState ->
-                    when (screenState) {
-                        ScreenState.Content -> showLoading(false)
-                        ScreenState.Loading -> showLoading(true)
-                    }
+        dashboardViewModel.screenState.observe(viewLifecycleOwner) {
+            when (it) {
+                ScreenState.Content -> showLoading(false)
+                is ScreenState.Error -> showError(it.text)
+                ScreenState.Loading -> showLoading(true)
+            }
         }
         setupRecyclerView()
         dashboardViewModel.meme.observe(viewLifecycleOwner) {
@@ -47,6 +50,8 @@ class MemeListFragment :
                 val lastVisibleItemPos = layoutManager.findLastVisibleItemPosition()
 
                 if (lastVisibleItemPos == totalItemCount - 1) {
+                    isLoadingItem = false
+                    memeAdapter.createLoader()
                     dashboardViewModel.loadingNextPage()
                 }
             }
@@ -54,11 +59,15 @@ class MemeListFragment :
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.rvMemeList.isVisible = !isLoading
-        binding.loader.isVisible = isLoading
+        if (isLoadingItem) {
+            binding.rvMemeList.isVisible = !isLoading
+            binding.loader.isVisible = isLoading
+        }else{
+            binding.rvMemeList.isVisible = true
+            binding.loader.isVisible = false
+        }
     }
 
-    //todo если не используешь, удаляй
     private fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }

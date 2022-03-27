@@ -7,5 +7,4 @@
         <item name="android:textSize">@dimen/text_meme_size</item>
         <item name="android:textStyle">bold</item>
     </style>
-
 </resources>
