@@ -10,7 +10,12 @@
     <string name="tv_top_text">Верхняя строка мема</string>
     <string name="tv_bottom_text">Нижняя строка мема</string>
     <string name="tv_description_text">Описание мемчика, история происхождения и тп</string>
+    <string name="tv_demo_text">Возникли проблемы во время загрузки данных из сети. Хотите запустить демо-данные?</string>
     <string name="iv_logo_meme">Изображение мема</string>
     <string name="button_add_to_database">Добавить в базу данных</string>
     <string name="button_text">+</string>
+    <string name="button_launch_demo_data">YES</string>
+    <string name="button_update_meme_data">NO</string>
+
+
 </resources>

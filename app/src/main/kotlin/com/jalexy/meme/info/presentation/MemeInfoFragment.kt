@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.jalexy.meme.R
 import com.jalexy.meme.base.BindingFragment
 import com.jalexy.meme.databinding.FragmentMemeInfoBinding
 import com.jalexy.meme.main.domain.models.ScreenState
@@ -36,9 +37,16 @@ class MemeInfoFragment : BindingFragment<FragmentMemeInfoBinding>(FragmentMemeIn
         }
 
         homeViewModel.memeInfo.observe(viewLifecycleOwner) {
-            Glide.with(this)
-                .load(it.imageUrl)
-                .into(binding.image)
+            if (it.imageUrl == "demoImage") {
+                binding.image.setImageResource(R.drawable.ricardo)
+            } else if (it.imageUrl.isEmpty()) {
+                binding.image.setImageResource(R.drawable.notfound)
+            } else {
+                Glide.with(this)
+                    .load(it.imageUrl)
+                    .error(R.drawable.notfound)
+                    .into(binding.image)
+            }
 
             binding.topText.text = it.topText
             binding.bottomText.text = it.bottomText

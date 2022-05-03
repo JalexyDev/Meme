@@ -26,6 +26,7 @@ class MemeListViewModel @Inject constructor(
     private val removeMemeInfoFromFavoriteUseCase: RemoveMemeInfoFromFavoriteUseCase,
     private val containsPrimaryKeyUseCase: ContainsPrimaryKeyUseCase,
     private val containsPrimaryKeyMemeInfoUseCase: ContainsPrimaryKeyMemeInfoUseCase,
+    private val getDemoMemesUseCase: GetDemoMemesUseCase
 ) : ViewModel() {
 
     private val listMeme: MutableList<Meme> by lazy { mutableListOf() }
@@ -61,9 +62,32 @@ class MemeListViewModel @Inject constructor(
             } catch (e: Exception) {
                 e.printStackTrace()
                 _screenState.value = ScreenState.Error("Нет соединения")
+
+
             } finally {
                 isLoading = false
             }
+        }
+    }
+
+    fun launchMemeData() {
+        loadAllMeme(countPage)
+    }
+
+    fun launchDemoData() {
+        viewModelScope.launch {
+            _screenState.value = ScreenState.Loading
+            withContext(Dispatchers.IO) {
+                val memeDemo = getDemoMemesUseCase()
+                if (memeDemo.isNullOrEmpty()) {
+                    isFinished = true
+                } else {
+                    val memeCheck = memeDemo.map { dbCheckItem(it) }
+                    listMeme.addAll(memeCheck)
+                }
+            }
+            _meme.postValue(listMeme)
+            _screenState.value = ScreenState.Content
         }
     }
 

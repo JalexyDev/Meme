@@ -92,7 +92,7 @@
             tools:text="@string/tv_bottom_text" />
 
         <Button
-            android:id="@+id/button_add_to_database"
+            android:id="@+id/buttonAddToDatabase"
             android:layout_width="@dimen/button_size"
             android:layout_height="@dimen/button_size"
             android:layout_marginEnd="@dimen/l_margin"

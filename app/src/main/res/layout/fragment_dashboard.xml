@@ -7,6 +7,50 @@
     android:background="@color/gray"
     tools:context=".memelist.presentation.MemeListFragment">
 
+    <TextView
+        android:id="@+id/tv_demo"
+        style="@style/DemoText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/l_margin"
+        android:layout_marginTop="20dp"
+        android:text="@string/tv_demo_text"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/rv_meme_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_launch_demo_data"
+        android:layout_width="@dimen/button_size_width"
+        android:layout_height="@dimen/button_size_height"
+        android:layout_marginStart="@dimen/xxxxl_margin"
+        android:layout_marginBottom="@dimen/xxxxl_margin"
+        android:contentDescription="@string/button_add_to_database"
+        android:text="@string/button_launch_demo_data"
+        android:textSize="@dimen/text_demo_size"
+        android:enabled="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_demo" />
+
+    <Button
+        android:id="@+id/button_update"
+        android:text="@string/button_update_meme_data"
+        android:textSize="@dimen/text_demo_size"
+        android:layout_width="@dimen/button_size_width"
+        android:layout_height="@dimen/button_size_height"
+        android:layout_marginEnd="@dimen/xxxxl_margin"
+        android:layout_marginBottom="@dimen/xxxxl_margin"
+        android:contentDescription="@string/button_add_to_database"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_demo" />
+
     <ProgressBar
         android:id="@+id/loader"
         android:layout_width="wrap_content"
