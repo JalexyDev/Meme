@@ -3,16 +3,13 @@ package com.jalexy.meme.main.data.api
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.jalexy.meme.R
 import com.jalexy.meme.main.data.database.AppDataBase
 import com.jalexy.meme.main.data.mappers.MemeMapper
 import com.jalexy.meme.main.data.mappers.MemeMapperRoom
 import com.jalexy.meme.main.domain.MemeRepository
 import com.jalexy.meme.main.domain.models.Meme
 import com.jalexy.meme.main.domain.models.MemeInfo
-import com.jalexy.meme.main.domain.models.MemeInfoDemo
 import javax.inject.Inject
-import kotlin.random.Random
 
 class MemeRepositoryImpl @Inject constructor(
     application: Application,
@@ -41,7 +38,7 @@ class MemeRepositoryImpl @Inject constructor(
                 false,
                 i - 100,
                 "Milos",
-                "demoImage",
+                "http://images.shoutwiki.com/ytp/9/97/%D0%A0%D0%B8%D0%BA%D0%B0%D1%80%D0%B4%D0%BE_%D0%9C%D0%B8%D0%BB%D0%BE%D1%81.jpg",
                 "Ricardo Milos",
                 "Ricardo Milos , is a superhero who is mostly known for his dancing video, which became one of the most famous memes of 2019 and still to this day.",
                 "Ricardo"
@@ -82,7 +79,17 @@ class MemeRepositoryImpl @Inject constructor(
 
     override fun getFavoriteMemeInfo(memeId: Int): MemeInfo {
         return if (memeId < 0) {
-            mapper.memeInfoDemoToMemeInfo(MemeInfoDemo(memeId))
+            MemeInfo(
+                memeId,
+                "Milos",
+                "Ricardo Milos , is a superhero who is mostly known for his dancing video, which became one of the most famous memes of 2019 and still to this day.",
+                "http://images.shoutwiki.com/ytp/9/97/%D0%A0%D0%B8%D0%BA%D0%B0%D1%80%D0%B4%D0%BE_%D0%9C%D0%B8%D0%BB%D0%BE%D1%81.jpg",
+                "Ricardo Milos",
+                emptyList(),
+                "Ricardo Milos , is a superhero who is mostly known for his dancing video, which became one of the most famous memes of 2019 and still to this day.",
+                null,
+                "Ricardo"
+            )
         } else {
             mapperRoom.mapDbModelInfoToEntity(memeInfoDao.getMemeInfo(memeId))
         }

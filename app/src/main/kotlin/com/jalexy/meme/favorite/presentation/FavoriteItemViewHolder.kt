@@ -15,16 +15,11 @@ class FavoriteItemViewHolder(private val binding: ItemMemeFavotiteBinding) :
         deleteToDataBaseClickListener: ((Meme) -> Unit)?
 
     ) {
-        if (meme.image == "demoImage"){
-            binding.ivLogoMeme.setImageResource(R.drawable.ricardo)
-        }else if (meme.image.isEmpty()){
-            binding.ivLogoMeme.setImageResource(R.drawable.notfound)
-        }else{
-            Glide.with(itemView.context)
-                .load(meme.image)
-                .error(R.drawable.notfound)
-                .into(binding.ivLogoMeme)
-        }
+        Glide.with(itemView.context)
+            .load(meme.image)
+            .error(R.drawable.notfound)
+            .into(binding.ivLogoMeme)
+
         binding.tvTopText.text = meme.topText
         binding.tvBottomText.text = meme.bottomText
         binding.tvTitleText.text = meme.name

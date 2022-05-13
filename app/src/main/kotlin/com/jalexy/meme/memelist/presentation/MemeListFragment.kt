@@ -90,7 +90,7 @@ class MemeListFragment :
         }
         binding.buttonUpdate.setOnClickListener {
             isListLoading = true
-            dashboardViewModel.launchMemeData()
+            dashboardViewModel.loadAllMeme()
         }
     }
 

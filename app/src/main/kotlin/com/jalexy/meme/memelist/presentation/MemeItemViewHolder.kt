@@ -18,16 +18,10 @@ class MemeItemViewHolder(private val binding: ItemMemeBinding) :
         changeFragmentClickListener: ((Meme) -> Unit),
         addToDataBaseClickListener: ((Meme, callback: (item: Meme) -> Unit) -> Meme),
     ) {
-        if (meme.image == "demoImage"){
-            binding.ivLogoMeme.setImageResource(R.drawable.ricardo)
-        }else if (meme.image.isEmpty()){
-            binding.ivLogoMeme.setImageResource(R.drawable.notfound)
-        }else{
-            Glide.with(itemView.context)
-                .load(meme.image)
-                .error(R.drawable.notfound)
-                .into(binding.ivLogoMeme)
-        }
+        Glide.with(itemView.context)
+            .load(meme.image)
+            .error(R.drawable.notfound)
+            .into(binding.ivLogoMeme)
 
         binding.tvTopText.text = meme.topText
         binding.tvBottomText.text = meme.bottomText

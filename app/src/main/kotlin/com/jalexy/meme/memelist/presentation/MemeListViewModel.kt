@@ -41,15 +41,15 @@ class MemeListViewModel @Inject constructor(
     val meme: LiveData<List<Meme>> = _meme
 
     init {
-        loadAllMeme(countPage)
+        loadAllMeme()
     }
 
-    private fun loadAllMeme(page: Int) {
+    fun loadAllMeme() {
         viewModelScope.launch {
             _screenState.value = ScreenState.Loading
             try {
                 withContext(Dispatchers.IO) {
-                    val meme = loadMemeAllUseCase(page)
+                    val meme = loadMemeAllUseCase(countPage)
                     if (meme.isNullOrEmpty()) {
                         isFinished = true
                     } else {
@@ -62,16 +62,10 @@ class MemeListViewModel @Inject constructor(
             } catch (e: Exception) {
                 e.printStackTrace()
                 _screenState.value = ScreenState.Error("Нет соединения")
-
-
             } finally {
                 isLoading = false
             }
         }
-    }
-
-    fun launchMemeData() {
-        loadAllMeme(countPage)
     }
 
     fun launchDemoData() {
@@ -139,14 +133,13 @@ class MemeListViewModel @Inject constructor(
                 withContext(Dispatchers.IO) {
                     isLoading = true
                     countPage++
-                    loadAllMeme(countPage)
+                    loadAllMeme()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
-
 
     private suspend fun dbCheckItem(meme: Meme): Meme {
         try {

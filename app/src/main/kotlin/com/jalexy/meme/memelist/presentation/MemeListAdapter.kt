@@ -67,6 +67,6 @@ class MemeListAdapter @Inject constructor(
 
     companion object {
         const val VIEW_TYPE_ITEM = 1
-        const val VIEW_TYPE_LOADER = 300
+        const val VIEW_TYPE_LOADER = -1
     }
 }

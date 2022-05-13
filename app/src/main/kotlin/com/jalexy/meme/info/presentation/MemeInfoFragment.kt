@@ -37,16 +37,10 @@ class MemeInfoFragment : BindingFragment<FragmentMemeInfoBinding>(FragmentMemeIn
         }
 
         homeViewModel.memeInfo.observe(viewLifecycleOwner) {
-            if (it.imageUrl == "demoImage") {
-                binding.image.setImageResource(R.drawable.ricardo)
-            } else if (it.imageUrl.isEmpty()) {
-                binding.image.setImageResource(R.drawable.notfound)
-            } else {
-                Glide.with(this)
-                    .load(it.imageUrl)
-                    .error(R.drawable.notfound)
-                    .into(binding.image)
-            }
+            Glide.with(this)
+                .load(it.imageUrl)
+                .error(R.drawable.notfound)
+                .into(binding.image)
 
             binding.topText.text = it.topText
             binding.bottomText.text = it.bottomText
