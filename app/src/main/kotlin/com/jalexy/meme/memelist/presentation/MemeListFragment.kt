@@ -22,12 +22,15 @@ class MemeListFragment :
     private val dashboardViewModel by viewModels<MemeListViewModel>()
 
     private var isLoadingItem = true
+    private var isListLoading = false
 
     @Inject
     lateinit var memeAdapter: MemeListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        isListLoading = true
 
         dashboardViewModel.screenState.observe(viewLifecycleOwner) {
             when (it) {
@@ -50,6 +53,9 @@ class MemeListFragment :
                 val lastVisibleItemPos = layoutManager.findLastVisibleItemPosition()
 
                 if (lastVisibleItemPos == totalItemCount - 1) {
+                    if (!isListLoading) {
+                        return
+                    }
                     isLoadingItem = false
                     memeAdapter.createLoader()
                     dashboardViewModel.loadingNextPage()
@@ -59,10 +65,13 @@ class MemeListFragment :
     }
 
     private fun showLoading(isLoading: Boolean) {
+        binding.tvDemo.isVisible = false
+        binding.buttonLaunchDemoData.isVisible = false
+        binding.buttonUpdate.isVisible = false
         if (isLoadingItem) {
             binding.rvMemeList.isVisible = !isLoading
             binding.loader.isVisible = isLoading
-        }else{
+        } else {
             binding.rvMemeList.isVisible = true
             binding.loader.isVisible = false
         }
@@ -70,6 +79,19 @@ class MemeListFragment :
 
     private fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        binding.tvDemo.isVisible = true
+        binding.buttonLaunchDemoData.isVisible = true
+        binding.buttonUpdate.isVisible = true
+        binding.rvMemeList.isVisible = false
+        binding.loader.isVisible = false
+        binding.buttonLaunchDemoData.setOnClickListener {
+            isListLoading = false
+            dashboardViewModel.launchDemoData()
+        }
+        binding.buttonUpdate.setOnClickListener {
+            isListLoading = true
+            dashboardViewModel.loadAllMeme()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -86,7 +108,9 @@ class MemeListFragment :
 
     private fun launchInfoFragment(meme: Meme) {
         findNavController()
-            .navigate(MemeListFragmentDirections
-                .actionNavigationMemeListToNavigationInfo(meme))
+            .navigate(
+                MemeListFragmentDirections
+                    .actionNavigationMemeListToNavigationInfo(meme)
+            )
     }
 }

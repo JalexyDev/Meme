@@ -15,7 +15,7 @@ class MemeRepositoryImpl @Inject constructor(
     application: Application,
     private val apiService: MemeApiService,
     private val mapper: MemeMapper,
-    private val mapperRoom: MemeMapperRoom,
+    private val mapperRoom: MemeMapperRoom
 ) : MemeRepository {
 
     private val memeDao = AppDataBase.getInstance(application).memeDao()
@@ -29,6 +29,23 @@ class MemeRepositoryImpl @Inject constructor(
     override suspend fun getAllMemes(page: Int): List<Meme> {
         val memes = apiService.getAllMeme(page).data
         return mapper.mapAllMemesDto(memes)
+    }
+
+    override suspend fun getDemoMemes(): List<Meme> {
+        val listMemeDemo: MutableList<Meme> by lazy { mutableListOf() }
+        for (i in 0 until 10) {
+            val item = Meme(
+                false,
+                i - 100,
+                "Milos",
+                "http://images.shoutwiki.com/ytp/9/97/%D0%A0%D0%B8%D0%BA%D0%B0%D1%80%D0%B4%D0%BE_%D0%9C%D0%B8%D0%BB%D0%BE%D1%81.jpg",
+                "Ricardo Milos",
+                "Ricardo Milos , is a superhero who is mostly known for his dancing video, which became one of the most famous memes of 2019 and still to this day.",
+                "Ricardo"
+            )
+            listMemeDemo.add(item)
+        }
+        return listMemeDemo
     }
 
     override suspend fun getFavoriteMeme(memeId: Int): Meme {
@@ -61,7 +78,21 @@ class MemeRepositoryImpl @Inject constructor(
     }
 
     override fun getFavoriteMemeInfo(memeId: Int): MemeInfo {
-        return mapperRoom.mapDbModelInfoToEntity(memeInfoDao.getMemeInfo(memeId))
+        return if (memeId < 0) {
+            MemeInfo(
+                memeId,
+                "Milos",
+                "Ricardo Milos , is a superhero who is mostly known for his dancing video, which became one of the most famous memes of 2019 and still to this day.",
+                "http://images.shoutwiki.com/ytp/9/97/%D0%A0%D0%B8%D0%BA%D0%B0%D1%80%D0%B4%D0%BE_%D0%9C%D0%B8%D0%BB%D0%BE%D1%81.jpg",
+                "Ricardo Milos",
+                emptyList(),
+                "Ricardo Milos , is a superhero who is mostly known for his dancing video, which became one of the most famous memes of 2019 and still to this day.",
+                null,
+                "Ricardo"
+            )
+        } else {
+            mapperRoom.mapDbModelInfoToEntity(memeInfoDao.getMemeInfo(memeId))
+        }
     }
 
     override suspend fun removeMemeInfoFromFavorite(memeInfo: MemeInfo) {
@@ -69,6 +100,10 @@ class MemeRepositoryImpl @Inject constructor(
     }
 
     override fun containsPrimaryKeyMemeInfo(memeId: Int): Boolean {
-        return memeInfoDao.containsPrimaryKeyMemeInfo(memeId)
+        return if (memeId < 0) {
+            true
+        } else {
+            memeInfoDao.containsPrimaryKeyMemeInfo(memeId)
+        }
     }
 }

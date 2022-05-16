@@ -5,6 +5,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
+import com.jalexy.meme.R
 import com.jalexy.meme.databinding.ItemMemeBinding
 import com.jalexy.meme.databinding.ItemMemeLoadingBinding
 import com.jalexy.meme.main.domain.models.Meme
@@ -19,7 +20,9 @@ class MemeItemViewHolder(private val binding: ItemMemeBinding) :
     ) {
         Glide.with(itemView.context)
             .load(meme.image)
+            .error(R.drawable.notfound)
             .into(binding.ivLogoMeme)
+
         binding.tvTopText.text = meme.topText
         binding.tvBottomText.text = meme.bottomText
         binding.tvTitleText.text = meme.name

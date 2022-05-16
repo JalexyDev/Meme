@@ -10,6 +10,8 @@ interface MemeRepository {
 
     suspend fun getAllMemes(page: Int): List<Meme>
 
+    suspend fun getDemoMemes(): List<Meme>
+
     suspend fun getFavoriteMeme(memeId: Int): Meme
 
     suspend fun addFavoriteMeme(meme: Meme)
